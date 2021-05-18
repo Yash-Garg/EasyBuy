@@ -13,6 +13,7 @@ dependencies:
   firebase_auth: ^1.1.4
   firebase_core: ^1.1.1
   get: ^4.1.4
+  google_fonts: ^2.1.0
   lint: ^1.5.3
 
 dev_dependencies:
