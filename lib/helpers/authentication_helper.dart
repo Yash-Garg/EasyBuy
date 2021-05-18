@@ -31,7 +31,6 @@ Future signInWithEmail(String email, String password) async {
         .signInWithEmailAndPassword(email: email, password: password);
     Get.showSnackbar(customSnack(
         'Successfully Signed In', userCredential.user!.email.toString()));
-    Get.offAllNamed('/account', arguments: email);
   } on FirebaseAuthException catch (e) {
     if (e.code == 'user-not-found') {
       Get.showSnackbar(customSnack(null, 'No user found for that email.'));

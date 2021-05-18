@@ -204,7 +204,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                             _emailController.text, _passController.text);
                       } else {
                         Get.showSnackbar(customSnack(
-                            null, 'Please correct the entered details!'));
+                            null, 'Please check the entered details.'));
                       }
                     },
                     child: Text(
