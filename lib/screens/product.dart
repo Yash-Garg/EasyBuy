@@ -35,7 +35,7 @@ class _ProductScreenState extends State<ProductScreen> {
                       child: Image.network(snapshot.data['image'].toString()),
                     ),
                     Positioned(
-                      top: 5,
+                      top: 15,
                       right: 0,
                       child: MaterialButton(
                         onPressed: () {},
@@ -51,7 +51,7 @@ class _ProductScreenState extends State<ProductScreen> {
                       ),
                     ),
                     Positioned(
-                      top: 70,
+                      top: 85,
                       right: 0,
                       child: MaterialButton(
                         onPressed: () {},

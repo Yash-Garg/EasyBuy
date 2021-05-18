@@ -133,12 +133,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     onPressed: () async {
                       final String email = _emailController.text;
                       final String pass = _passController.text;
-
                       if (isValidEmail(email) && isValidPassword(pass)) {
                         await signInWithEmail(email, pass);
-                        Future.delayed(const Duration(seconds: 2), () {
-                          Get.offAllNamed('/product');
-                        });
                       } else {
                         Get.showSnackbar(
                           customSnack(

@@ -218,11 +218,13 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                         await signUpWithEmail(email, pass);
                         Future.delayed(const Duration(seconds: 2), () async {
                           await addUserDetails(name, number, email);
+                          Get.toNamed('/login');
                         });
-                        Get.toNamed('/login');
                       } else {
-                        Get.showSnackbar(customSnack(
-                            null, 'Please check the entered details.'));
+                        Get.showSnackbar(
+                          customSnack(
+                              null, 'Please check the entered details.'),
+                        );
                       }
                     },
                     child: Text(
