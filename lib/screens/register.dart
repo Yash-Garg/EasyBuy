@@ -126,6 +126,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                     style: TextStyle(fontSize: 16),
                     controller: _mobileController,
                     keyboardType: TextInputType.number,
+                    maxLength: 10,
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     validator: (input) => isValidNumber(input!)
                         ? null
