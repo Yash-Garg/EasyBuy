@@ -1,4 +1,5 @@
 import 'package:easybuy/screens/login.dart';
+import 'package:easybuy/screens/product.dart';
 import 'package:easybuy/screens/register.dart';
 import 'package:easybuy/theme/app_theme.dart';
 import 'package:flutter/material.dart';
@@ -15,6 +16,12 @@ List<GetPage> _pages = [
   GetPage(
     name: '/login',
     page: () => LoginScreen(),
+    transition: Transition.topLevel,
+    transitionDuration: Duration(milliseconds: 200),
+  ),
+  GetPage(
+    name: '/product',
+    page: () => ProductScreen(),
     transition: Transition.topLevel,
     transitionDuration: Duration(milliseconds: 200),
   ),

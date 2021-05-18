@@ -136,6 +136,9 @@ class _LoginScreenState extends State<LoginScreen> {
 
                       if (isValidEmail(email) && isValidPassword(pass)) {
                         await signInWithEmail(email, pass);
+                        Future.delayed(const Duration(seconds: 2), () {
+                          Get.offAllNamed('/product');
+                        });
                       } else {
                         Get.showSnackbar(
                           customSnack(
