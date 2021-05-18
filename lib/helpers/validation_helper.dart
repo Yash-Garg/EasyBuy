@@ -15,3 +15,11 @@ bool isValidPassword(String p) {
     return true;
   }
 }
+
+bool isValidName(String n) {
+  if (n.isNotEmpty) {
+    return true;
+  } else {
+    return false;
+  }
+}

@@ -1,7 +1,10 @@
 import 'dart:ui';
 
+import 'package:easybuy/helpers/authentication_helper.dart';
 import 'package:easybuy/helpers/validation_helper.dart';
+import 'package:easybuy/widgets/custom_snack.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class RegistrationScreen extends StatefulWidget {
   @override
@@ -85,6 +88,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                     style: TextStyle(fontSize: 16),
                     keyboardType: TextInputType.name,
                     controller: _nameController,
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
+                    validator: (input) =>
+                        isValidName(input!) ? null : 'Enter a valid name',
                     decoration: InputDecoration(
                       labelText: 'Name',
                       hintText: 'Your name here..',
@@ -119,6 +125,10 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                     style: TextStyle(fontSize: 16),
                     controller: _mobileController,
                     keyboardType: TextInputType.number,
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
+                    validator: (input) => isValidNumber(input!)
+                        ? null
+                        : 'Enter a valid mobile number',
                     decoration: InputDecoration(
                       labelText: 'Mobile Number',
                       prefixText: '+91 ',
@@ -185,7 +195,18 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   width: MediaQuery.of(context).size.width * 0.9,
                   height: 50,
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () async {
+                      if (isValidEmail(_emailController.text) &&
+                          isValidPassword(_passController.text) &&
+                          isValidNumber(_mobileController.text) &&
+                          isValidName(_nameController.text)) {
+                        await signUpWithEmail(
+                            _emailController.text, _passController.text);
+                      } else {
+                        Get.showSnackbar(customSnack(
+                            null, 'Please correct the entered details!'));
+                      }
+                    },
                     child: Text(
                       'REGISTER',
                       style: TextStyle(

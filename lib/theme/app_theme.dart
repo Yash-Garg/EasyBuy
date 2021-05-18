@@ -3,6 +3,9 @@ import 'package:google_fonts/google_fonts.dart';
 
 ThemeData appTheme = ThemeData(
   brightness: Brightness.light,
+  primaryColor: Colors.orangeAccent,
+  iconTheme: IconThemeData(color: Colors.white),
+  fontFamily: GoogleFonts.ubuntu().fontFamily,
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ButtonStyle(
       backgroundColor: MaterialStateProperty.all<Color>(
@@ -23,6 +26,4 @@ ThemeData appTheme = ThemeData(
       borderSide: BorderSide(color: Colors.orange, width: 2),
     ),
   ),
-  iconTheme: IconThemeData(color: Colors.white),
-  fontFamily: GoogleFonts.ubuntu().fontFamily,
 );
