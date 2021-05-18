@@ -211,7 +211,6 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                       'REGISTER',
                       style: TextStyle(
                         fontSize: 20,
-                        fontWeight: FontWeight.bold,
                         letterSpacing: 1,
                       ),
                     ),
@@ -219,12 +218,27 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 ),
                 SizedBox(height: 20),
                 TextButton(
-                  onPressed: () {},
-                  child: Text(
-                    'Already have an account? Login',
-                    style: TextStyle(fontSize: 16, color: Colors.black),
+                  onPressed: () {
+                    Get.offAllNamed('/login');
+                  },
+                  child: RichText(
+                    text: TextSpan(
+                        style: TextStyle(fontSize: 16),
+                        children: <TextSpan>[
+                          TextSpan(
+                            text: 'Already have an account?',
+                            style: TextStyle(
+                              color: Color(0xFF525252),
+                            ),
+                          ),
+                          TextSpan(
+                            text: 'Login',
+                            style: TextStyle(color: Colors.black),
+                          ),
+                        ]),
                   ),
                 ),
+                SizedBox(height: 20),
               ],
             ),
           ],
