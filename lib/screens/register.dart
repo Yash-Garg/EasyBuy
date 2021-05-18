@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:easybuy/helpers/authentication_helper.dart';
+import 'package:easybuy/helpers/database_helper.dart';
 import 'package:easybuy/helpers/validation_helper.dart';
 import 'package:easybuy/widgets/custom_snack.dart';
 import 'package:flutter/material.dart';
@@ -196,12 +197,19 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   height: 50,
                   child: ElevatedButton(
                     onPressed: () async {
-                      if (isValidEmail(_emailController.text) &&
-                          isValidPassword(_passController.text) &&
-                          isValidNumber(_mobileController.text) &&
-                          isValidName(_nameController.text)) {
-                        await signUpWithEmail(
-                            _emailController.text, _passController.text);
+                      final String email = _emailController.text;
+                      final String pass = _passController.text;
+                      final String number = _mobileController.text;
+                      final String name = _nameController.text;
+
+                      if (isValidEmail(email) &&
+                          isValidPassword(pass) &&
+                          isValidNumber(number) &&
+                          isValidName(name)) {
+                        await signUpWithEmail(email, pass);
+                        Future.delayed(const Duration(seconds: 2), () async {
+                          await addUserDetails(name, number, email);
+                        });
                       } else {
                         Get.showSnackbar(customSnack(
                             null, 'Please check the entered details.'));
@@ -219,7 +227,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 SizedBox(height: 20),
                 TextButton(
                   onPressed: () {
-                    Get.offAllNamed('/login');
+                    Get.toNamed('/login');
                   },
                   child: RichText(
                     text: TextSpan(
