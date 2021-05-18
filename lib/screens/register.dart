@@ -150,7 +150,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     validator: (input) => isValidPassword(input!)
                         ? null
-                        : 'Password should be at least 8 characters',
+                        : 'Password should be at least 8 characters long',
                     decoration: InputDecoration(
                       labelText: 'Password',
                       hintText: 'xxxxxxxxx',
@@ -171,9 +171,15 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                     keyboardType: TextInputType.visiblePassword,
                     obscureText: _obscureConfirmText,
                     autovalidateMode: AutovalidateMode.onUserInteraction,
-                    validator: (input) => isValidPassword(input!)
-                        ? null
-                        : 'Password should be at least 8 characters',
+                    validator: (value) {
+                      if (value!.length < 8) {
+                        return 'Password should be atleast 8 characters long';
+                      } else if (value != _passController.text) {
+                        return 'Password must be same as above';
+                      } else {
+                        return null;
+                      }
+                    },
                     decoration: InputDecoration(
                       labelText: 'Confirm Password',
                       hintText: 'xxxxxxxxx',
@@ -201,11 +207,13 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                       final String pass = _passController.text;
                       final String number = _mobileController.text;
                       final String name = _nameController.text;
+                      final String confirmPass = _confirmPassController.text;
 
                       if (isValidEmail(email) &&
                           isValidPassword(pass) &&
                           isValidNumber(number) &&
-                          isValidName(name)) {
+                          isValidName(name) &&
+                          pass == confirmPass) {
                         await signUpWithEmail(email, pass);
                         Future.delayed(const Duration(seconds: 2), () async {
                           await addUserDetails(name, number, email);
