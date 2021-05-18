@@ -1,16 +1,18 @@
-# easybuy
+# EasyBuy
 
-A new Flutter project.
+### Assignment
 
-## Getting Started
+Try to develop a very basic application with very limited functionalities mocking an e-commerce app. It is an assignment so we want you to focus only on the given points and functionalities that we have mentioned. Build according to the UI we have given.
 
-This project is a starting point for a Flutter application.
+<p align="center">
+  <img width="32%" src="images/screen-1.jpg?raw=true">
+  <img width="32%" src="images/screen-2.jpg?raw=true">
+  <img width="32%" src="images/screen-3.jpg?raw=true">
+</p>
 
-A few resources to get you started if this is your first Flutter project:
+### Important points
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- All screens must be 100% exact same as UI that we have provided to check your UI skills.
+- Implement registration and login functionality using firebase.
+- Products must come from firebase database.
+- You can choose your Database design, just make sure your application has the above mentioned functionalities.
